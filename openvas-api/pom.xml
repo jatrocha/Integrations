@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>openvas-api</artifactId>
+
+	<name>API para manipulacao dados oriundos do OpenVAS</name>
+
+	<parent>
+		<groupId>com.modulo</groupId>
+		<version>0.0.1-SNAPSHOT</version>
+		<artifactId>integrations</artifactId>
+	</parent>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.jdom</groupId>
+			<artifactId>jdom</artifactId>
+			<version>2.0.2</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+	<groupId>com.modulo.integrations</groupId>
+</project>

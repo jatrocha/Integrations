@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.modulo</groupId>
+	<artifactId>integrations</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>Integracao de dados com a Plataforma Risk Manager</name>
+	<url>http://www.modulo.com</url>
+
+  <modules>
+    <module>openvas-api</module>
+    <module>qualys-api</module>
+    <module>imperva-api</module>
+    <module>mainframe-api</module>
+    <module>stubs</module>
+    <module>ddi-api</module>
+    <module>integrations-commons</module>
+    <module>compliance</module>
+  </modules>
+
+	<parent>
+		<groupId>com.modulo</groupId>
+		<artifactId>root</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<scm>
+		<connection>scm:svn:http://ci/svn/modulo/Construction/Java/trunk/Integrations/</connection>
+		<developerConnection>scm:svn:http://ci/svn/modulo/Construction/Java/trunk/Integrations/</developerConnection>
+		<url>http://ci/svn/modulo/Construction/Java/trunk/Integrations/</url>
+	</scm>
+
+	<properties>
+
+		<framework.version>1.4.0-SNAPSHOT</framework.version>
+
+		<sonar.exclusions>
+			**/*Stub*,
+			**/*Test*,
+			**/*Helper*
+		</sonar.exclusions>
+		
+		<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+		<!--sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis-->
+		<sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
+
+    <slf4j.version>1.7.7</slf4j.version>
+    <log4j-api.version>2.0.1</log4j-api.version>
+
+	</properties>
+
+
+	<build>
+	
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.sonarsource.scanner.maven</groupId>
+					<artifactId>sonar-maven-plugin</artifactId>
+					<version>3.1.1</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+
+		<plugins>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.7.0.201403182114</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<destFile>${sonar.jacoco.reportPath}</destFile>
+				</configuration>
+			</plugin>
+		</plugins>
+
+	</build>
+
+	<repositories>
+
+		<repository>
+
+			<id>Releases</id>
+			<name>Maven Repository - Releases</name>
+			<url>http://ic-local/nexus/content/repositories/releases</url>
+
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+
+			<releases>
+				<updatePolicy>always</updatePolicy>
+			</releases>
+
+		</repository>
+
+		<repository>
+
+			<id>Snapshots</id>
+			<name>Maven Repository - Snapshots</name>
+			<url>http://ic-local/nexus/content/repositories/snapshots</url>
+
+			<snapshots>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+
+		</repository>
+
+		<repository>
+
+			<id>Apache Nexus</id>
+			<url>https://repository.apache.org/content/repositories/snapshots/</url>
+
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+
+		</repository>
+
+	</repositories>
+
+	<dependencyManagement>
+
+		<dependencies>
+
+			<!-- Framework -->
+
+			<dependency>
+				<groupId>framework</groupId>
+				<artifactId>base</artifactId>
+				<version>${framework.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>framework</groupId>
+				<artifactId>template</artifactId>
+				<version>${framework.version}</version>
+			</dependency>
+
+			<!-- Framework -->
+
+		</dependencies>
+
+	</dependencyManagement>
+
+   <dependencies>
+
+   <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>${slf4j.version}</version>
+    </dependency>
+
+     <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-api</artifactId>
+        <version>${log4j-api.version}</version>
+     </dependency>
+
+     <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-core</artifactId>
+        <version>${log4j-api.version}</version> 
+     </dependency>
+
+
+
+		<!-- Framework -->
+
+		<dependency>
+			<groupId>framework</groupId>
+			<artifactId>base</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>framework</groupId>
+			<artifactId>template</artifactId>
+		</dependency>
+
+		<!-- Framework -->
+
+	</dependencies>
+
+</project>
